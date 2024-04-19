@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export async function pokemonList() {
   try {
-    const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=10000&offset=0');
+    const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=1025&offset=0');
     return response.data.results;
   } catch (error) {
     console.error('Erro ao buscar a lista de Pokémon: ', error);
