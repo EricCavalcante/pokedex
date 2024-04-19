@@ -9,9 +9,13 @@ let pokemons = ref([]);
 let nomePokemon = ref("");
 let pokemonsFiltrados = ref([]);
 let filtroNome = ref("")
-let spriteUrl = ref(
+let frontSpriteUrl = ref(
   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
 );
+let backSpriteUrl= ref("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/")
+let frontShinyUrl = ref("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/")
+let backShinyUrl = ref("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/")
+
 
 function limparFiltros() {
   return (pokemonsFiltrados.value = pokemons.value);
@@ -64,8 +68,7 @@ onMounted(async () => {
 
 <template>
   <Navbar />
-
-  <Modal />
+  
   <div class="container text-center">
     <h1 class="display-1">Bem vindo a Pokedex!</h1>
     <p class="fs-3">
@@ -162,10 +165,14 @@ onMounted(async () => {
         v-for="pokemon in pokemonsFiltrados"
         :key="pokemon.id"
         :name="pokemon.name"
-        :src="spriteUrl + pokemon.url.split('/')[6] + '.png'"
+        :frente="frontSpriteUrl + pokemon.url.split('/')[6] + '.png'"
+        :costas="backSpriteUrl + pokemon.url.split('/')[6] + '.png'"
+        :frenteShiny="frontShinyUrl + pokemon.url.split('/')[6] + '.png'"
+        :costasShiny="backShinyUrl + pokemon.url.split('/')[6] + '.png'"
         :tipo1="pokemon.type1"
         :tipo2="pokemon.type2"
       />
+      
     </div>
   </div>
 </template>
